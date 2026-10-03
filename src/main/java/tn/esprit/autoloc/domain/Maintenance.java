@@ -19,11 +19,15 @@ public class Maintenance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idMaintenance;
+    private Long idMaintenance;
 
     private LocalDate dateDebut;
 
     private LocalDate dateFin;
 
     private String description;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "vehicule_id")
+    private Vehicule vehicule;
 }

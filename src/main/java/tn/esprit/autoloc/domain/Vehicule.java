@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Entity
 @Table(name = "vehicule")
@@ -16,7 +17,7 @@ public class Vehicule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idVehicule;
+    private Long idVehicule;
 
     @Column(nullable = false, unique = true, length = 20)
     private String immatriculation;
@@ -33,8 +34,19 @@ public class Vehicule {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
-    private StatusVehicule status;
+    private StatutVehicule statut;
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal tarifJournalier;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "agence_id")
+    private Agence agence;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "vehicule_equipement", joinColumns = @JoinColumn(name = "vehicule_id"),inverseJoinColumns = @JoinColumn(name = "equipement_id"))
+    private Set<Equipement> equipements;
+
+    @OneToMany(mappedBy = "vehicule", fetch = FetchType.LAZY)
+    private Set<Reservation> reservations;
 }

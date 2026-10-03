@@ -1,10 +1,13 @@
 package tn.esprit.autoloc.domain;
 
 import jakarta.persistence.*;
+import jakarta.transaction.UserTransaction;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "agence")
@@ -17,10 +20,16 @@ public class Agence {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idAgence;
+    private Long idAgence;
 
-    private String no;
+    private String nom;
     private String ville;
     private String adresse;
     private String telephone;
+
+    @OneToMany(mappedBy = "agence", fetch = FetchType.LAZY)
+    private Set<Vehicule> vehicules;
+
+    @OneToMany(mappedBy = "agence", fetch = FetchType.LAZY)
+    private Set<Employe> employes;
 }

@@ -28,6 +28,10 @@ public class Paiement {
     private LocalDate datePaiement;
 
     @Enumerated(EnumType.STRING)
-    private ModePaiement mode;
+    private ModePaiement modePaiement;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "contrat_id")
+    private Contrat contrat;
 
 }

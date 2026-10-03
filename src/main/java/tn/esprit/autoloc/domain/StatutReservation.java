@@ -1,6 +1,6 @@
 package tn.esprit.autoloc.domain;
 
-public enum StatusReservation {
+public enum StatutReservation {
     EN_ATTENTE,
     CONFIRMEE,
     ANNULEE,

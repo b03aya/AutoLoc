@@ -17,14 +17,18 @@ public class Employe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idEmploye;
+    private Long idEmploye;
 
     @Column(nullable = false, length = 50)
     private String nom;
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 50)
     private String prenom;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 8)
     private RoleEmploye role;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "agence_id")
+    private Agence agence;
 }

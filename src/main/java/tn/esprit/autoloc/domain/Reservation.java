@@ -19,11 +19,23 @@ public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idReservation;
+    private Long idReservation;
 
     private LocalDate dateDebut;
     private LocalDate dateFin;
 
     @Enumerated(EnumType.STRING)
-    private StatusReservation status;
+    private StatutReservation statut;
+
+    @ManyToOne
+    @JoinColumn(name = "vehicule_id")
+    private Vehicule vehicule;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+
+    @OneToOne
+    @JoinColumn(name = "contrat_id")
+    private Contrat contrat;
 }

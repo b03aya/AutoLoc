@@ -1,6 +1,6 @@
 package tn.esprit.autoloc.domain;
 
-public enum StatusVehicule {
+public enum StatutVehicule {
     DISPONIBLE,
     LOUE,
     MAINTENANCE;

@@ -40,7 +40,6 @@ public class Vehicule {
     private BigDecimal tarifJournalier;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "agence_id")
     private Agence agence;
 
     @ManyToMany(fetch = FetchType.LAZY)

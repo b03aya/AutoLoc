@@ -28,6 +28,5 @@ public class Maintenance {
     private String description;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "vehicule_id")
     private Vehicule vehicule;
 }

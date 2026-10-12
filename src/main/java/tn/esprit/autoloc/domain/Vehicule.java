@@ -43,7 +43,6 @@ public class Vehicule {
     private Agence agence;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "vehicule_equipement", joinColumns = @JoinColumn(name = "vehicule_id"),inverseJoinColumns = @JoinColumn(name = "equipement_id"))
     private Set<Equipement> equipements;
 
     @OneToMany(mappedBy = "vehicule", fetch = FetchType.LAZY)
